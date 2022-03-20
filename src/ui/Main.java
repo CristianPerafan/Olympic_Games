@@ -125,14 +125,27 @@ private Scanner sc;
 	}
 	
 	public void pruebas() {
-		Country obj1 = new Country("Colombia",2,3,6,26,28,13);
+		/*
+		Country obj1 = new Country("Colombia",2,3,6,0,2,9);
 		list.addACountry(obj1);
 		Country obj2 = new Country("China",1,4,4,0,2,9);
 		list.addACountry(obj2);
-		Country obj3 = new Country("Rusia",10,21,17,26,28,13);
+		Country obj3 = new Country("Rusia",10,21,17,26,27,15);
 		list.addACountry(obj3);
-		Country obj4 =  new Country("USA",10,15,17,26,28,13);
+		Country obj4 =  new Country("USA",10,15,17,11,12,16);
 		list.addACountry(obj4);
+		*/
+		
+		Country obj1 = new Country("Colombia",3,2,2,0,2,9);
+		list.addACountry(obj1);
+		Country obj2 = new Country("China",2,2,2,0,2,9);
+		list.addACountry(obj2);
+		Country obj3 = new Country("Rusia",2,2,2,26,27,15);
+		list.addACountry(obj3);
+		Country obj4 =  new Country("USA",2,2,2,11,12,16);
+		list.addACountry(obj4);
+		
+		
 	}
 	
 	public void showInformationListings() {

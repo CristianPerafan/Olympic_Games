@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import comparators.CountryComparatorMen;
 import comparators.CountryComparatorWomen;
 
 public class CountryList {
@@ -24,17 +25,15 @@ private List<Country> countriesList;
 	
 	public String concatenateListInformation() {
 		String out = "";
-		/*
+		
 		//Sort the list by medals by gender
 		sortByAmountMedalsMenDsc();
-		
-		String out = "";
 		
 		out += "**Male***\n";
 		for(int i = 0;i<countriesList.size();i++) {
 			out += countriesList.get(i).toStringMenMedals()+"\n";
 		}
-		*/
+		
 		out += "----------\n";
 		
 		out += "**Female***\n";
@@ -58,7 +57,6 @@ private List<Country> countriesList;
 	}
 	
 	public void sortByAmountMedalsMenDsc() {
-		
-	
+		Collections.sort(countriesList, new CountryComparatorMen());
 	}
 }

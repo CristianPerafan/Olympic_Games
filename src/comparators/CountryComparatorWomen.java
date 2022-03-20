@@ -10,10 +10,10 @@ public class CountryComparatorWomen implements Comparator<Country>{
 	public int compare(Country c1, Country c2) {
 		int result = 0;
 		
-		if(c1.getGoldMedalsWomen()<c2.getGoldMedalsWomen()) {
+		if(c1.getGoldMedalsWomen()>c2.getGoldMedalsWomen()) {
 			result = 1;
 		}
-		else if(c1.getGoldMedalsWomen()>c2.getGoldMedalsWomen()) {
+		else if(c1.getGoldMedalsWomen()<c2.getGoldMedalsWomen()) {
 			result = -1;
 		}
 		else {
@@ -23,10 +23,10 @@ public class CountryComparatorWomen implements Comparator<Country>{
 			they will be ordered by the number of silver medals.
 			*/
 			
-			if(c1.getSilverMedalsWomen()<c2.getSilverMedalsWomen()) {
+			if(c1.getSilverMedalsWomen()>c2.getSilverMedalsWomen()) {
 				result = 1;
 			}
-			else if(c1.getSilverMedalsWomen()>c2.getSilverMedalsWomen()) {
+			else if(c1.getSilverMedalsWomen()<c2.getSilverMedalsWomen()) {
 				result = -1;
 			}
 			else {
@@ -35,10 +35,10 @@ public class CountryComparatorWomen implements Comparator<Country>{
 				they will be ordered by the number of bronze medals.
 				*/
 				
-				if(c1.getBronzeMedalsWomen()<c2.getBronzeMedalsWomen()) {
+				if(c1.getBronzeMedalsWomen()>c2.getBronzeMedalsWomen()) {
 					result = 1;
 				}
-				else if(c1.getBronzeMedalsWomen()>c2.getBronzeMedalsWomen()) {
+				else if(c1.getBronzeMedalsWomen()<c2.getBronzeMedalsWomen()) {
 					result = -1;
 				}
 				else {
