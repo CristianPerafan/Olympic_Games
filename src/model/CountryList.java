@@ -45,11 +45,35 @@ private List<Country> countriesList;
 			out += countriesList.get(i).toStringWomenMedals()+"\n";
 		}
 		
+		out += "----------\n";
 		
-				
-		
+		out += "**Combined**\n";
+
+		bubbleSortToTotalMedals();
+		for(int i =0;i<countriesList.size();i++) {
+			out += countriesList.get(i).toStringTotalMedals()+"\n";
+		}
 		
 		return out;
+	}
+	
+	public void bubbleSortToTotalMedals() {
+		int n = countriesList.size();
+		boolean stop = true;
+		
+		for(int i = 0;i<n && stop;i++) {
+			stop = false;
+			for(int j = 1;j<n-i;j++) {
+				if(countriesList.get(j).compareByTotalMedals(countriesList.get(j-1))>0) {
+					Country temp = countriesList.get(j);
+					countriesList.set(j,countriesList.get(j-1));
+					countriesList.set(j-1, temp);
+					stop = true;
+					
+				}
+			}
+		}
+		
 	}
 	
 	public void sortByAmountMedalsWomenAsc() {

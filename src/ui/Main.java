@@ -1,5 +1,8 @@
 package ui;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Scanner;
 
 import model.Country;
@@ -33,6 +36,7 @@ private Scanner sc;
 		System.out.println("***OLYMPIC GAMES***\n"+
 				"(1) add a country\n"+
 				"(2) Show list\n"+
+				"(3) Import countries from txt file\n"+
 				"(0) exit");
 		
 		int option = sc.nextInt();
@@ -50,8 +54,10 @@ private Scanner sc;
 			addACountry();
 			break;
 		case 2:
-			 pruebas();
 			showInformationListings(); 
+			break;
+		case 3:
+			deserializeCountries();
 			break;
 		default:
 			System.out.println("Invalid option!!!");
@@ -124,29 +130,7 @@ private Scanner sc;
 			
 	}
 	
-	public void pruebas() {
-		/*
-		Country obj1 = new Country("Colombia",2,3,6,0,2,9);
-		list.addACountry(obj1);
-		Country obj2 = new Country("China",1,4,4,0,2,9);
-		list.addACountry(obj2);
-		Country obj3 = new Country("Rusia",10,21,17,26,27,15);
-		list.addACountry(obj3);
-		Country obj4 =  new Country("USA",10,15,17,11,12,16);
-		list.addACountry(obj4);
-		*/
-		
-		Country obj1 = new Country("Colombia",3,2,2,0,2,9);
-		list.addACountry(obj1);
-		Country obj2 = new Country("China",2,2,2,0,2,9);
-		list.addACountry(obj2);
-		Country obj3 = new Country("Rusia",2,2,2,26,27,15);
-		list.addACountry(obj3);
-		Country obj4 =  new Country("USA",2,2,2,11,12,16);
-		list.addACountry(obj4);
-		
-		
-	}
+	
 	
 	public void showInformationListings() {
 		
@@ -170,7 +154,48 @@ private Scanner sc;
 			return false;
 		}
 		
+	}
+	
+	
+	public void deserializeCountries() {
+		File file = new File(".\\files\\Countries.txt");
 		
+		if(file.exists()) {
+			
+			try {
+				FileReader fr = new FileReader(file);
+				
+				@SuppressWarnings("resource")
+				BufferedReader breader = new BufferedReader(fr);
+				 
+				String line = null;
+				while((line = breader.readLine()) != null) {
+					String [] parts = line.split("\\;");
+					if(parts.length == 7) {
+						String name = parts[0];
+						
+						int goldMedalsWomen = Integer.valueOf(parts[1]);
+						int silverMedalsWomen = Integer.valueOf(parts[2]);
+						int bronzeMedalsWomen = Integer.valueOf(parts[3]);
+						
+						int goldMedalsMen = Integer.valueOf(parts[4]);
+						int silverMedalsMen = Integer.valueOf(parts[5]);
+						int bronzeMedalsmen = Integer.valueOf(parts[6]);
+						
+						Country obj = new Country(name,goldMedalsMen,silverMedalsMen,bronzeMedalsmen,
+								goldMedalsWomen,silverMedalsWomen,bronzeMedalsWomen);
+						
+						list.addACountry(obj);
+						
+						
+					}
+				}
+				System.out.println("The countries list has been imported....");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
